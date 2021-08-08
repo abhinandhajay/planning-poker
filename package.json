@@ -1,0 +1,23 @@
+{
+  "name": "planning-poker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server/index.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm install && npm run build"
+  },
+  "author": "Abhinandh Ajay",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "16.6.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1"
+  }
+}
