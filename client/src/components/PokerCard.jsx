@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
 	root: {
-		minWidth: 70,
+		minWidth: 80,
 		minHeight: 100,
 		display: 'flex',
 		alignItems: 'center',
@@ -27,7 +27,7 @@ export default function PokerCard(props) {
 	return (
 		<Card raised className={classes.root} onClick={() => props.cardClickHandler(props.children)}>
 			<CardContent className="hover">
-				<Typography variant="h3" align="center">
+				<Typography variant="h4">
 					{ props.children }
 				</Typography>
 			</CardContent>
