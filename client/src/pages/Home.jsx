@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Container, Typography } from '@material-ui/core';
+import { Box, Button, Container, TextField, Typography } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 		height: '100vh'
 	},
 	title: {
-		marginBottom: '2rem',
+		marginBottom: '4rem',
 		cursor: 'pointer',
 		'&:hover': {
 			color: '#C6CFF8'
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 export default function Home() {
 	const classes = useStyles();
 	const history = useHistory()
-	const [, setCode] = useState('');
+	const [code, setCode] = useState('');
 
 	const hostClickHandler = (value) => {
 		// randomly generate a 4 character string
@@ -37,8 +37,12 @@ export default function Home() {
 
 	};
 
-	const joinClickHandler = (value) => {
-		console.log("Join game")
+	const handleCodeFieldChange = (event) => {
+		setCode(event.target.value);
+	};
+
+	const joinClickHandler = () => {
+		history.push(`/${code}`);
 	};
 
 	return (
@@ -46,19 +50,26 @@ export default function Home() {
 			<Typography variant="h2" className={classes.title} onClick={() => history.push(`/`)}>
 				Planning Poker
 			</Typography>
-			<Box display="flex">
-				<Box m={2}>
-					<Button variant="contained" onClick={hostClickHandler}>
+			<Box display="flex" flexDirection="column" alignItems="center">
+				<Box m={1} mb={4}>
+					<Button size="large" variant="contained" onClick={hostClickHandler}>
 						Host Game
 					</Button>
 				</Box>
-				<Box m={2}>
-					<Button variant="contained" color="secondary" onClick={joinClickHandler}>
+				<Box m={1} mb={4}>
+					<Typography variant="subtitle1">
+						or
+					</Typography>
+				</Box>
+				<Box m={1}>
+					<TextField label="Enter Code" variant="outlined" color="secondary" onChange={handleCodeFieldChange} />
+				</Box>
+				<Box m={1}>
+					<Button size="large" variant="contained" color="secondary" onClick={joinClickHandler}>
 						Join Game
 					</Button>
 				</Box>
 			</Box>
-
 		</Container>
 	);
 }
