@@ -10,6 +10,14 @@ const useStyles = makeStyles({
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
+		height: '100vh'
+	},
+	title: {
+		// margin: '2rem',
+		marginBottom: '2rem',
+	},
+	selectedCard: {
+		margin: '2rem',
 	},
 });
 function App() {
@@ -28,13 +36,13 @@ function App() {
 
 	return (
 		<Container className={ classes.root }>
-			<Typography variant="h1" component="h1">
+			<Typography variant="h2" className={classes.title}>
 				Planning Poker
 			</Typography>
 			<PokerCard cardClickHandler={cardResetHandler}>
 				{selectedCard}
 			</PokerCard>
-			<Typography variant="subtitle1" component="h1">
+			<Typography variant="subtitle1" className={classes.selectedCard}>
 				Selected Card
 			</Typography>
 			<Box display="flex">
