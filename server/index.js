@@ -8,9 +8,9 @@ const app = express();
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-app.get("/api", (req, res) => {
+app.get("/api/rooms/:id", (req, res) => {
 	res.json({
-		message: "Hello from server!"
+		message: `You are in room ${req.params['id']}`
 	});
 });
 

@@ -7,18 +7,20 @@ import {
 import './App.css';
 import Home from "./pages/Home";
 import Planning from "./pages/Planning";
+import NavBar from "./components/NavBar";
 
 
 function App() {
-
 	return (
 		<Router>
 			<div>
 				<Switch>
 					<Route path="/:id">
+						<NavBar />
 						<Planning />
 					</Route>
 					<Route path="/">
+						<NavBar />
 						<Home />
 					</Route>
 				</Switch>

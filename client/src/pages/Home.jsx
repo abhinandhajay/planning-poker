@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Container, TextField, Typography } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
@@ -13,6 +14,7 @@ const useStyles = makeStyles({
 	},
 	title: {
 		marginBottom: '4rem',
+		textAlign: 'center',
 		cursor: 'pointer',
 		'&:hover': {
 			color: '#C6CFF8'
@@ -26,7 +28,7 @@ const useStyles = makeStyles({
 
 export default function Home() {
 	const classes = useStyles();
-	const history = useHistory()
+	const history = useHistory();
 	const [code, setCode] = useState('');
 
 	const hostClickHandler = (value) => {
@@ -44,6 +46,12 @@ export default function Home() {
 	const joinClickHandler = () => {
 		history.push(`/${code}`);
 	};
+
+	
+
+	useEffect(() => {
+		// console.log(name);
+	}, []);
 
 	return (
 		<Container className={classes.root}>

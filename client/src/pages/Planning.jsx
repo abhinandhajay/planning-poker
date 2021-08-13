@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Container, Typography } from '@material-ui/core';
 import PokerCard from "../components/PokerCard";
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
 	},
 	title: {
 		marginBottom: '2rem',
+		textAlign: 'center',
 		cursor: 'pointer',
 		'&:hover': {
 			color: '#C6CFF8'
@@ -31,6 +33,7 @@ export default function Planning() {
 	const sequence = ['0', '1', '2', '3', '5', '8', '13', '21', '34', '55', 'inf'];
 
 	const [selectedCard, setSelectedCard] = useState("...");
+	// const [room, setRoom] = useState("");
 
 	const cardClickHandler = (value) => {
 		setSelectedCard(value);
@@ -39,6 +42,16 @@ export default function Planning() {
 	const cardResetHandler = (value) => {
 		setSelectedCard('...');
 	};
+
+	useEffect(() => {
+		const room = history.location.pathname.split('/')[1];
+		fetch(`/api/rooms/${room}`)
+			.then(response => response.json())
+			.then(json => {
+				console.log(json);
+			}
+		);
+	}, []);
 
 	return (
 		<Container className={classes.root}>
